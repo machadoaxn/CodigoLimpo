@@ -44,9 +44,24 @@ Option Explicit
 Dim objConvert          As New ClsConversao
 
 Private Sub cmdConverter_Click()
+
+Dim msg                 As String
+
+On Error GoTo LblErr
+
    If (txtValorAConverter.Text = "") Or (Not (IsNumeric(txtValorAConverter.Text))) Then
-      MsgBox "Digite um valor válido!", vbSystemModal + vbExclamation, "Alerta"
+      msg = "Digite um valor válido!"
    Else
-      Call objConvert.ConverteValor(txtValorAConverter.Text)
+      msg = objConvert.ConverteValor(txtValorAConverter.Text)
    End If
+   
+   MsgBox msg, vbInformation + vbSystemModal
+
+GoTo LblEnd
+
+LblErr:
+   MsgBox Err.Number, Err.Description, Err.Source
+   Resume LblEnd
+
+LblEnd:
 End Sub

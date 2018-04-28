@@ -14,32 +14,28 @@ Attribute VB_Exposed = False
 Option Explicit
 
 
-Public Function ConverteValor(Valor As Currency)
+Public Function ConverteValor(ValorAConverter As Currency) As String
 
-Dim msg     As String
+Dim Texto         As String
+Dim Valor         As Currency
 
 On Error GoTo LblErr
 
-   Select Case Valor
-      Case 1: msg = "Um"
-      Case 2: msg = "Dois"
-      Case 3: msg = "Três"
-      Case 4: msg = "Quatro"
-      Case 5: msg = "Cinco"
-      Case 6: msg = "Seis"
-      Case 7: msg = "Sete"
-      Case 8: msg = "Oito"
-      Case 9: msg = "Nove"
-      Case 10: msg = "Dez"
-   End Select
+   Valor = Round(ValorAConverter, 2)
    
+   If Len(Valor) = 1 Then
+   
+   ElseIf Len(Valor) = 2 Then
+   
+   End If
+
    If Valor = 1 Then
-      msg = msg & " Real"
+      Texto = "Um"
    Else
-      msg = msg & " Reais"
+      
    End If
    
-   MsgBox msg
+   ConverteValor = Texto
 
 GoTo LblEnd
 

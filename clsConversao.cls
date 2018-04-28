@@ -14,23 +14,22 @@ Attribute VB_Exposed = False
 Option Explicit
 
 
-Public Function ConverteValor(ValorAConverter As Currency) As String
+Public Function ConverteValor(ValorAConverter As String) As String
 
 Dim Texto         As String
 Dim Valor         As Currency
 
 On Error GoTo LblErr
-
-   Valor = Round(ValorAConverter, 2)
-   
-   If Len(Valor) = 1 Then
-   
-   ElseIf Len(Valor) = 2 Then
-   
-   End If
-
-   If Valor = 1 Then
-      Texto = "Um"
+   If ValorAConverter = 0 Then
+      Texto = "Zero reais"
+   ElseIf ValorAConverter = 1 Then
+      Texto = "Um real"
+   ElseIf (ValorAConverter) > 1 Then
+      If Len(Valor) = 1 Then
+         Texto = ConverteValorUm(ValorAConverter)
+'      ElseIf Len(Valor) = 2 Then
+      
+      End If
    Else
       
    End If
@@ -45,3 +44,19 @@ LblErr:
 
 LblEnd:
 End Function
+
+Public Function ConverteValorUm(ValorAConverter As String) As String
+On Error GoTo LblErr
+   
+   
+   
+GoTo LblEnd
+
+LblErr:
+   MsgBox Err.Number & ", " & Err.Description & ", " & Err.Source
+   Resume LblEnd
+
+LblEnd:
+End Function
+
+

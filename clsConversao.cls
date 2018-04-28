@@ -16,14 +16,30 @@ Option Explicit
 
 Public Function ConverteValor(Valor As Currency)
 
+Dim msg     As String
 
 On Error GoTo LblErr
 
    Select Case Valor
-      Case 1: MsgBox "Um Real"
-      Case 2: MsgBox "Dois Reais"
+      Case 1: msg = "Um"
+      Case 2: msg = "Dois"
+      Case 3: msg = "Três"
+      Case 4: msg = "Quatro"
+      Case 5: msg = "Cinco"
+      Case 6: msg = "Seis"
+      Case 7: msg = "Sete"
+      Case 8: msg = "Oito"
+      Case 9: msg = "Nove"
+      Case 10: msg = "Dez"
    End Select
    
+   If Valor = 1 Then
+      msg = msg & " Real"
+   Else
+      msg = msg & " Reais"
+   End If
+   
+   MsgBox msg
 
 GoTo LblEnd
 

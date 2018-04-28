@@ -14,3 +14,22 @@ Attribute VB_Exposed = False
 Option Explicit
 
 
+Public Function ConverteValor(Valor As Currency)
+
+
+On Error GoTo LblErr
+
+   Select Case Len(Valor) < 2
+      Case 1: MsgBox "Um Real"
+      Case 2: MsgBox "Dois Reais"
+   End Select
+   
+
+GoTo LblEnd
+
+LblErr:
+   MsgBox Err.Number & ", " & Err.Description & ", " & Err.Source
+   Resume LblEnd
+
+LblEnd:
+End Function

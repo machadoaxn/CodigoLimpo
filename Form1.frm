@@ -42,5 +42,8 @@ Attribute VB_Exposed = False
 Private Sub cmdConverter_Click()
    If (txtValorAConverter.Text = "") Or (Not (IsNumeric(txtValorAConverter.Text))) Then
       MsgBox "Digite um valor válido!", vbSystemModal + vbExclamation, "Alerta"
+   Else
+      
+   
    End If
 End Sub

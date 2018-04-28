@@ -14,21 +14,39 @@ Attribute VB_Exposed = False
 Option Explicit
 
 Dim aUnidade(20) As String
-Dim aDezenas(9) As String
+Dim aDezenas(9)  As String
 
 
 Public Function ConverteValor(ValorAConverter As Currency) As String
 
-Dim Texto         As String
-Dim Valor         As Currency
+Dim Texto            As String
+Dim ValorInt         As Long
+Dim ValorDec         As Long
+Dim ControleInt      As Boolean
 
 On Error GoTo LblErr
 
-   Call PreencherValorUmANove
+   Call PreencherValorUmADezenove
+   Call PreencherDezenas
+   ControleInt = False
+   ValorInt = CInt(ValorAConverter)
+   ValorDec = Right(CStr((ValorAConverter) - CInt(ValorAConverter)), (Len(CStr((ValorAConverter) - CInt(ValorAConverter))) - 2))
    
-   If CInt(ValorAConverter) Then
-      If ValorAConverter >= 0 And ValorAConverter <= 19 Then
-         ConverteValor = aUnidade(ValorAConverter)
+   If ValorInt > 0 And ValorInt <= 19 Then
+      ConverteValor = aUnidade(ValorInt)
+      ControleInt = True
+      If ValorInt = 1 Then
+         ConverteValor = ConverteValor & " real"
+      Else
+         ConverteValor = ConverteValor & " reais"
+      End If
+   End If
+   
+   If ControleInt And (ValorDec > 0) Then
+      If (ValorDec) < 20 Then
+         ConverteValor = ConverteValor & " e " & aUnidade(ValorDec) & " centavos"
+      Else
+         ConverteValor = ConverteValor & " e " & aDezenas(Left(ValorDec, 1)) & " e " & aUnidade(Right(ValorDec, 1)) & " centavos"
       End If
    End If
 
@@ -41,7 +59,7 @@ LblErr:
 LblEnd:
 End Function
 
-Public Function PreencherValorUmANove() As String
+Public Function PreencherValorUmADezenove() As String
 On Error GoTo LblErr
    
    aUnidade(0) = "zero"
@@ -74,19 +92,19 @@ LblErr:
 LblEnd:
 End Function
 
-Public Function PreencherValorDezADezenove() As String
+Public Function PreencherDezenas() As String
 On Error GoTo LblErr
    
-   aDezenas(10) = "dez"
-   aDezenas(11) = "onze"
-   aDezenas(12) = "doze"
-   aDezenas(13) = "treze"
-   aDezenas(14) = "quatorze"
-   aDezenas(15) = "quinze"
-   aDezenas(16) = "dezesseis"
-   aDezenas(17) = "dezessete"
-   aDezenas(18) = "dezoito"
-   aDezenas(19) = "dezenove"
+   aDezenas(0) = "zero"
+   aDezenas(1) = "dez"
+   aDezenas(2) = "vinte"
+   aDezenas(3) = "trinta"
+   aDezenas(4) = "quarenta"
+   aDezenas(5) = "cinquenta"
+   aDezenas(6) = "sessenta"
+   aDezenas(7) = "setenta"
+   aDezenas(8) = "oitenta"
+   aDezenas(9) = "noventa"
    
 GoTo LblEnd
 

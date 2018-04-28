@@ -30,7 +30,7 @@ On Error GoTo LblErr
    Call PreencherDezenas
    ControleInt = False
    ValorInt = CInt(ValorAConverter)
-   ValorDec = Right(CStr((ValorAConverter) - CInt(ValorAConverter)), (Len(CStr((ValorAConverter) - CInt(ValorAConverter))) - 2))
+   ValorDec = Right(CStr((ValorAConverter) - CInt(ValorAConverter)), (Len(CStr((ValorAConverter) - CLng(ValorAConverter))) - 2))
    
    If ValorInt > 0 And ValorInt <= 19 Then
       ConverteValor = aUnidade(ValorInt)

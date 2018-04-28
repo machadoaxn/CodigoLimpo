@@ -13,7 +13,7 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Option Explicit
 
-Dim aUnidade(9) As String
+Dim aUnidade(20) As String
 Dim aDezenas(9) As String
 
 
@@ -25,8 +25,9 @@ Dim Valor         As Currency
 On Error GoTo LblErr
 
    Call PreencherValorUmANove
+   
    If CInt(ValorAConverter) Then
-      If ValorAConverter >= 0 And ValorAConverter <= 9 Then
+      If ValorAConverter >= 0 And ValorAConverter <= 19 Then
          ConverteValor = aUnidade(ValorAConverter)
       End If
    End If
@@ -53,6 +54,16 @@ On Error GoTo LblErr
    aUnidade(7) = "sete"
    aUnidade(8) = "oito"
    aUnidade(9) = "nove"
+   aUnidade(10) = "dez"
+   aUnidade(11) = "onze"
+   aUnidade(12) = "doze"
+   aUnidade(13) = "treze"
+   aUnidade(14) = "quatorze"
+   aUnidade(15) = "quinze"
+   aUnidade(16) = "dezesseis"
+   aUnidade(17) = "dezessete"
+   aUnidade(18) = "dezoito"
+   aUnidade(19) = "dezenove"
    
 GoTo LblEnd
 
@@ -66,16 +77,16 @@ End Function
 Public Function PreencherValorDezADezenove() As String
 On Error GoTo LblErr
    
-   aDezenas(0) = "dez"
-   aDezenas(1) = "onze"
-   aDezenas(2) = "doze"
-   aDezenas(3) = "treze"
-   aDezenas(4) = "quatorze"
-   aDezenas(5) = "quinze"
-   aDezenas(6) = "dezesseis"
-   aDezenas(7) = "dezessete"
-   aDezenas(8) = "dezoito"
-   aDezenas(9) = "dezenove"
+   aDezenas(10) = "dez"
+   aDezenas(11) = "onze"
+   aDezenas(12) = "doze"
+   aDezenas(13) = "treze"
+   aDezenas(14) = "quatorze"
+   aDezenas(15) = "quinze"
+   aDezenas(16) = "dezesseis"
+   aDezenas(17) = "dezessete"
+   aDezenas(18) = "dezoito"
+   aDezenas(19) = "dezenove"
    
 GoTo LblEnd
 

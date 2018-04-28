@@ -13,28 +13,23 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Option Explicit
 
+Dim aUnidade(9) As String
+Dim aDezenas(9) As String
 
-Public Function ConverteValor(ValorAConverter As String) As String
+
+Public Function ConverteValor(ValorAConverter As Currency) As String
 
 Dim Texto         As String
 Dim Valor         As Currency
 
 On Error GoTo LblErr
-   If ValorAConverter = 0 Then
-      Texto = "Zero reais"
-   ElseIf ValorAConverter = 1 Then
-      Texto = "Um real"
-   ElseIf (ValorAConverter) > 1 Then
-      If Len(Valor) = 1 Then
-         Texto = ConverteValorUm(ValorAConverter)
-'      ElseIf Len(Valor) = 2 Then
-      
+
+   Call PreencherValorUmANove
+   If CInt(ValorAConverter) Then
+      If ValorAConverter >= 0 And ValorAConverter <= 9 Then
+         ConverteValor = aUnidade(ValorAConverter)
       End If
-   Else
-      
    End If
-   
-   ConverteValor = Texto
 
 GoTo LblEnd
 
@@ -45,10 +40,19 @@ LblErr:
 LblEnd:
 End Function
 
-Public Function ConverteValorUm(ValorAConverter As String) As String
+Public Function PreencherValorUmANove() As String
 On Error GoTo LblErr
    
-   
+   aUnidade(0) = "zero"
+   aUnidade(1) = "um"
+   aUnidade(2) = "dois"
+   aUnidade(3) = "três"
+   aUnidade(4) = "quatro"
+   aUnidade(5) = "cinco"
+   aUnidade(6) = "seis"
+   aUnidade(7) = "sete"
+   aUnidade(8) = "oito"
+   aUnidade(9) = "nove"
    
 GoTo LblEnd
 
@@ -58,5 +62,30 @@ LblErr:
 
 LblEnd:
 End Function
+
+Public Function PreencherValorDezADezenove() As String
+On Error GoTo LblErr
+   
+   aDezenas(0) = "dez"
+   aDezenas(1) = "onze"
+   aDezenas(2) = "doze"
+   aDezenas(3) = "treze"
+   aDezenas(4) = "quatorze"
+   aDezenas(5) = "quinze"
+   aDezenas(6) = "dezesseis"
+   aDezenas(7) = "dezessete"
+   aDezenas(8) = "dezoito"
+   aDezenas(9) = "dezenove"
+   
+GoTo LblEnd
+
+LblErr:
+   MsgBox Err.Number & ", " & Err.Description & ", " & Err.Source
+   Resume LblEnd
+
+LblEnd:
+End Function
+
+
 
 

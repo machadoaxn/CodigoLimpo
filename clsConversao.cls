@@ -6,7 +6,7 @@ BEGIN
   DataSourceBehavior  = 0  'vbNone
   MTSTransactionMode  = 0  'NotAnMTSObject
 END
-Attribute VB_Name = "Class1"
+Attribute VB_Name = "ClsConversao"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
@@ -19,7 +19,7 @@ Public Function ConverteValor(Valor As Currency)
 
 On Error GoTo LblErr
 
-   Select Case Len(Valor) < 2
+   Select Case Valor
       Case 1: MsgBox "Um Real"
       Case 2: MsgBox "Dois Reais"
    End Select

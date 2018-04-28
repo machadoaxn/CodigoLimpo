@@ -39,11 +39,14 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Option Explicit
+
+Dim objConvert          As New ClsConversao
+
 Private Sub cmdConverter_Click()
    If (txtValorAConverter.Text = "") Or (Not (IsNumeric(txtValorAConverter.Text))) Then
       MsgBox "Digite um valor válido!", vbSystemModal + vbExclamation, "Alerta"
    Else
-      
-   
+      Call objConvert.ConverteValor(txtValorAConverter.Text)
    End If
 End Sub
